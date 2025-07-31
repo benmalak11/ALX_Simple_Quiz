@@ -1,53 +1,44 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Select elements without getElementById
-  const num1Input = document.querySelector("#number1");
-  const num2Input = document.querySelector("#number2");
-  const resultSpan = document.querySelector("#calculation-result");
+function add(number1, number2) {
+    return number1 + number2;
+}
 
-  const addBtn = document.querySelector("#add");
-  const subtractBtn = document.querySelector("#subtract");
-  const multiplyBtn = document.querySelector("#multiply");
-  const divideBtn = document.querySelector("#divide");
+function subtract(number1, number2) {
+    return number1 - number2;
+}
 
-  // Arithmetic functions
-  function add(a, b) {
-    return a + b;
-  }
-  function subtract(a, b) {
-    return a - b;
-  }
-  function multiply(a, b) {
-    return a * b;
-  }
-  function divide(a, b) {
-    return b === 0 ? "Cannot divide by zero" : a / b;
-  }
+function multiply(number1, number2) {
+    return number1 * number2;
+}
 
-  // Function to get input values
-  function getNumbers() {
-    const num1 = parseFloat(num1Input.value) || 0;
-    const num2 = parseFloat(num2Input.value) || 0;
-    return [num1, num2];
-  }
+function divide(number1, number2) {
+    return number2 === 0 ? "Cannot divide by zero" : number1 / number2;
+}
 
-  // Event listeners
-  addBtn.addEventListener("click", function () {
-    const [num1, num2] = getNumbers();
-    resultSpan.textContent = add(num1, num2);
-  });
+// Event listeners for buttons
+document.querySelector("#add").addEventListener("click", function() {
+    const number1 = parseFloat(document.querySelector("#number1").value) || 0;
+    const number2 = parseFloat(document.querySelector("#number2").value) || 0;
+    const result = add(number1, number2);
+    document.querySelector("#calculation-result").textContent = result;
+});
 
-  subtractBtn.addEventListener("click", function () {
-    const [num1, num2] = getNumbers();
-    resultSpan.textContent = subtract(num1, num2);
-  });
+document.querySelector("#subtract").addEventListener("click", function() {
+    const number1 = parseFloat(document.querySelector("#number1").value) || 0;
+    const number2 = parseFloat(document.querySelector("#number2").value) || 0;
+    const result = subtract(number1, number2);
+    document.querySelector("#calculation-result").textContent = result;
+});
 
-  multiplyBtn.addEventListener("click", function () {
-    const [num1, num2] = getNumbers();
-    resultSpan.textContent = multiply(num1, num2);
-  });
+document.querySelector("#multiply").addEventListener("click", function() {
+    const number1 = parseFloat(document.querySelector("#number1").value) || 0;
+    const number2 = parseFloat(document.querySelector("#number2").value) || 0;
+    const result = multiply(number1, number2);
+    document.querySelector("#calculation-result").textContent = result;
+});
 
-  divideBtn.addEventListener("click", function () {
-    const [num1, num2] = getNumbers();
-    resultSpan.textContent = divide(num1, num2);
-  });
+document.querySelector("#divide").addEventListener("click", function() {
+    const number1 = parseFloat(document.querySelector("#number1").value) || 0;
+    const number2 = parseFloat(document.querySelector("#number2").value) || 0;
+    const result = divide(number1, number2);
+    document.querySelector("#calculation-result").textContent = result;
 });
