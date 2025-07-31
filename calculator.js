@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Select DOM elements
+  // Select elements without getElementById
   const num1Input = document.querySelector("#number1");
   const num2Input = document.querySelector("#number2");
   const resultSpan = document.querySelector("#calculation-result");
@@ -20,36 +20,34 @@ document.addEventListener("DOMContentLoaded", function () {
     return a * b;
   }
   function divide(a, b) {
-    if (b === 0) return "❌ Cannot divide by zero";
-    return a / b;
+    return b === 0 ? "Cannot divide by zero" : a / b;
   }
 
-  // Event listener helper
-  function calculate(operation) {
+  // Function to get input values
+  function getNumbers() {
     const num1 = parseFloat(num1Input.value) || 0;
     const num2 = parseFloat(num2Input.value) || 0;
-    let result;
-
-    switch (operation) {
-      case "add":
-        result = add(num1, num2);
-        break;
-      case "subtract":
-        result = subtract(num1, num2);
-        break;
-      case "multiply":
-        result = multiply(num1, num2);
-        break;
-      case "divide":
-        result = divide(num1, num2);
-        break;
-    }
-    resultSpan.textContent = result;
+    return [num1, num2];
   }
 
-  // ✅ Attach event listeners (no getElementById)
-  addBtn.addEventListener("click", () => calculate("add"));
-  subtractBtn.addEventListener("click", () => calculate("subtract"));
-  multiplyBtn.addEventListener("click", () => calculate("multiply"));
-  divideBtn.addEventListener("click", () => calculate("divide"));
+  // Event listeners
+  addBtn.addEventListener("click", function () {
+    const [num1, num2] = getNumbers();
+    resultSpan.textContent = add(num1, num2);
+  });
+
+  subtractBtn.addEventListener("click", function () {
+    const [num1, num2] = getNumbers();
+    resultSpan.textContent = subtract(num1, num2);
+  });
+
+  multiplyBtn.addEventListener("click", function () {
+    const [num1, num2] = getNumbers();
+    resultSpan.textContent = multiply(num1, num2);
+  });
+
+  divideBtn.addEventListener("click", function () {
+    const [num1, num2] = getNumbers();
+    resultSpan.textContent = divide(num1, num2);
+  });
 });
