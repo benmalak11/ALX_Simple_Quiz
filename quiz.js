@@ -2,6 +2,7 @@ function checkAnswer() {
     // Function body
     const correctAnswer = "4";
     const selected = document.querySelector('[name="quiz"]:checked');
+     const userAnswer = selected ? selected.value : null;
   feedbackDiv.style.display = "block";
 }
  if (!selected) {
