@@ -1,3 +1,7 @@
+checkAnswer.addEventListener("checkAnswer", function {
+
+const checkAnswer = document.getElementById("submit-answer");
+
 function checkAnswer() {
     // Function body
     const correctAnswer = "4";
@@ -5,13 +9,10 @@ function checkAnswer() {
      const userAnswer = selected ? selected.value : null;
   feedbackDiv.style.display = "block";
 }
- if (!selected) {
-      feedbackDiv.textContent = "❌ Please select an answer!";
-      feedbackDiv.style.color = "#dc3545";
-    } else if (selected.value === correctAnswer) {
-      feedbackDiv.textContent = "✅ Correct! JavaScript runs in a web browser.";
-      feedbackDiv.style.color = "#28a745";
-    } else {
-      feedbackDiv.textContent = `❌ Wrong! The correct answer is ${correctAnswer}.`;
-      feedbackDiv.style.color = "#dc3545";
-    }
+ if (userAnswer === correctAnswer) {
+    feedbackDiv.textContent = "Correct! Well done.";
+ }
+ if (userAnswer === anotherAnswer) {
+    feedbackDiv.textContent = "That's incorrect. Try again!";
+ }
+}
